@@ -24,7 +24,7 @@ def redeem_hour(request):
     hour.category = category
     hour.save()
 
-    output = "Earned" + category + "Hour"
+    output = "Earned " + category + " Hour"
     return HttpResponse(output)
 
 def spend_hours(request):
