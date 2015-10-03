@@ -169,7 +169,7 @@ html, body {
       $.ajax({
           type: "POST",
           url: "/tracker/redeem_hour",
-          data: {"type": type},
+          data: {"type": type, "csrfmiddlewaretoken": csrftoken},
           success: function(result){
             console.log(result);
           },
