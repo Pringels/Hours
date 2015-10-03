@@ -168,7 +168,7 @@ html, body {
 
     $(".button").on("click", function(){
       var type = $(this).parent().data("type");
-      csrftoken = $("input").val());
+      csrftoken = $("input").val();
       $.ajax({
           type: "POST",
           url: "/tracker/redeem_hour",
