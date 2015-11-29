@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+<h2>{{ title }}</h2>
+<em>by Peter Ringelmann - {{ post_date }}</em>
+{% endblock %}
+
+{% block content %}
+    <p>{{ content|safe }}</p>
+    <hr/>
+{% endblock %}
+
+
+

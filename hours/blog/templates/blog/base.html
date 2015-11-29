@@ -1,0 +1,108 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+    <body>
+        <div class="header">
+            <h1><a href="/">pete.digital</a></h1>
+            <nav>
+                <a href="/archive/">Archive</a>
+            </nav>
+        </div>
+
+        {% block title %}
+
+        {% endblock %}
+
+        <hr/>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </body>
+</html>
+
+<style>
+    html {
+        font-family: Courier;
+        padding: 20px;
+        color:#445;
+        background-color: #FDF5E6;
+    }
+
+    h1 {
+        font-size: 45px;
+        margin-bottom: 0px;
+        display: inline-block;
+    }
+
+    .header {
+        padding-bottom: 20px;
+        border-bottom: 2px solid #445;
+    }
+
+    nav {
+        float: right;
+        display: inline-block;
+        margin-top: 57px;
+    }
+
+    nav a {
+        display: inline-block;
+        text-decoration: none;  
+        color: #445;     
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    h1 a {
+        text-decoration: none;
+        color:#445;
+    }
+
+    h2 {
+        margin-top: 50px;
+        margin-bottom: 15px;
+    }
+
+    em {
+        color:#99A;
+        margin-bottom: 20px;
+        display: block;
+
+    }
+
+    p, ul {
+        margin-top: 45px;
+        max-width: 730px;
+        line-height: 1.5;
+        font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+    }
+
+    blockquote {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        line-height: 1.5;
+        margin-left: 40px;
+        max-width: 730px;
+        color:#99A;
+        font-style: italic;
+
+    }
+
+    .archive a {
+        color: #445;
+        text-decoration: underline;
+    }
+
+
+</style>

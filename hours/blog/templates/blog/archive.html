@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+<h2>Archive</h2>
+<em>Total posts: {{ count }}</em>
+{% endblock %}
+
+{% block content %}
+    <br/>
+    <div class="archive">
+    {% for item in posts|dictsortreversed:"post_date" %}
+        <a href='/{{ item.slug }}/'>{{ item.title }}</a> <em>{{ item.post_date }}</em>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+
+
