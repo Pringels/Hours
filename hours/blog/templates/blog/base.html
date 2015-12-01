@@ -26,6 +26,12 @@
 
         {% endblock %}
 
+        <hr/>
+
+        {% block comments %}
+
+        {% endblock %}
+
     </body>
 </html>
 
@@ -102,6 +108,28 @@
     .archive a {
         color: #445;
         text-decoration: underline;
+    }
+
+    input {
+        width: 200px;
+    }
+
+    input[type='submit'] {
+        background-color: #445;
+        border:0;
+        padding:10px;
+        color:#FDF5E6;
+        cursor:pointer;
+    }
+
+    textarea {
+        width:200px;
+        height:200px;
+    }
+
+    label{
+        width:300px;
+        display: block;
     }
 
 

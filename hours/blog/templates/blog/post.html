@@ -7,7 +7,35 @@
 
 {% block content %}
     <p>{{ content|safe }}</p>
-    <hr/>
+{% endblock %}
+
+{% block comments %}
+    <form action="/comment/" method="post">
+        {% csrf_token %}
+        <label for="author">Alias:</label>
+        <input type="text" name="author" required/>
+        <br/>
+        
+        <label for="comment">Comment:</label>
+        <textarea type="text"/ name="comment" required></textarea>
+        <br/>
+
+        <label for="email">Email: (not required)</label>
+        <input type="email" name="email"/>
+        <br/>
+
+        <input type="hidden" name="post" value="{{ title }}">
+        <br/>
+        <input type="submit" value="Add Comment" />
+    </form>
+    {% for object in comments %}
+        <h2>{{ object.author }}</h2>
+        <em>{{ object.pub_date }}</em>
+        <p>{{ object.comment }}</p>
+        <hr/>
+    {% endfor %}
+
+   
 {% endblock %}
 
 
