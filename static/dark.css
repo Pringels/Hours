@@ -1,0 +1,31 @@
+
+html {
+    color:#92a1a1;
+    background-color: #002b36;
+}
+
+nav a { 
+    color: #92a1a1;     
+}
+
+h1 a {
+    text-decoration: none;
+    color:#92a1a1;
+}
+
+em {
+    color:#00a399;
+}
+
+blockquote {
+    color:#99A;
+}
+
+.archive a {
+    color: #92a1a1;
+}
+
+input[type='submit'] {
+    background-color: #627b83;
+    color:#FDF5E6;
+}
