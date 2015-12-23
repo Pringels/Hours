@@ -1,29 +1,97 @@
-
-html {
-    font-family: Courier;
-    padding: 20px;
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Rosarivo', serif;
+    background-color: rgba(0, 43, 54, 1);
+    color:#556e75;
+    font-size: 16px;
 }
 
+@media screen and (max-width: 400px) {
+    html, body {
+        font-size: 13px;
+    }
+}
+
+.main {
+
+    background-color: #fef6e3;
+    text-align: center;
+}
+
+
+.comments {
+    padding: 30px;
+}
+
+.comments p {
+    background-color: #fef6e3;
+    display: block;
+    padding:10px;
+    border: 1px solid #91a1a1;
+    margin-top:10px;
+}
+
+.comments h3 {
+    margin-bottom: 5px;
+}
+
+
 h1 {
-    font-size: 45px;
+    font-size: 30px;
     margin-bottom: 0px;
     display: inline-block;
+    text-align: center;
+}
+
+.title {
+    max-width: 650px;
+    margin: 6rem auto;
+    padding: 0px 20px 0px 20px;
+
+}
+
+.title h2 {
+    font-size: 4.2rem;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    line-height: 5rem;
+}
+
+@media screen and (max-width: 400px) {
+    .title h2 {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+    .title {
+        margin: 3rem auto;
+    }
+}
+
+.title em {
+    
 }
 
 .header {
     padding-bottom: 20px;
     border-bottom: 2px solid #566e75;
+    background-color: #556e75;
+    color: #fef6e3;
+    letter-spacing: 3px;
 }
 
 nav {
-    float: right;
-    display: inline-block;
-    margin-top: 57px;
+    position: absolute;
+    right: 2rem;
+    top:30px;
 }
 
 nav a {
     display: inline-block;
     text-decoration: none;    
+    font-family: 'Abel', sans-serif;
 }
 
 nav a:hover {
@@ -32,11 +100,14 @@ nav a:hover {
 
 h1 a {
     text-decoration: none;
+    color: #fef6e3;
+    font-family: 'Abel', sans-serif;
+
 }
 
-h2 {
-    margin-top: 50px;
-    margin-bottom: 15px;
+h3 {
+    font-size: 2.5rem;
+    margin: 5rem 0 2.5rem 0;
 }
 
 em {
@@ -48,16 +119,35 @@ p, ul {
     margin-top: 45px;
     max-width: 730px;
     line-height: 1.5;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 
 }
 
-blockquote {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+.main .post{
+     margin-top: 45px;
+    max-width: 650px;
+    line-height: 1.5;
+    margin: 45px auto;
+    text-align: left;
+    font-size: 1.2rem;
+    padding: 0px 20px 0px 20px;
+
+}
+
+.post a {
+    color: #00a299;
+}
+
+q {
+
     line-height: 1.5;
     margin-left: 40px;
-    max-width: 730px;
+    max-width: 650px;
     font-style: italic;
+    display: block;
+}
+
+blockquote {
+    font-size: 3rem;
 }
 
 .archive a {
@@ -65,7 +155,8 @@ blockquote {
 }
 
 input {
-    width: 200px;
+    max-width: 320px;
+    width:100%;
 }
 
 input[type='submit'] {
@@ -75,11 +166,24 @@ input[type='submit'] {
 }
 
 textarea {
-    width:200px;
-    height:200px;
+    max-width: 320px;
+    width:100%;
+    height:150px;
+    border:0;
 }
 
 label{
     width:300px;
     display: block;
 }
+
+iframe {
+    margin-top:20px;
+}
+
+code {
+    font-size: 0.8rem;
+    padding: 20px !important;
+}
+
+

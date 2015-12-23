@@ -10,33 +10,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+<link href='https://fonts.googleapis.com/css?family=Rosarivo:400,400italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:900' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+
 <link rel="stylesheet" type="text/css" href="{% static "base.css" %}">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/solarized-dark.min.css">
+
+
 
 </head>
     <body>
-        <div class="header">
-            <h1><a href="/">pete.digital</a></h1>
-            <nav>
-                <a href="/archive/">Archive</a>
-            </nav>
+        <div class="main">
+            <div class="header">
+                <h1><a href="/">pete.digital</a></h1>
+                <nav>
+                    <a href="/archive/">Archive</a>
+                </nav>
+            </div>
+
+            {% block title %}
+
+            {% endblock %}
+
+            {% block content %}
+
+            {% endblock %}
         </div>
+        {% if page != 'archive' %}
+        <div class="comments">
+            <h2>Comments</h2>
+            <hr/>
+            {% block comments %}
 
-        {% block title %}
-
-        {% endblock %}
-
-        <hr/>
-
-        {% block content %}
-
-        {% endblock %}
-
-        <hr/>
-
-        {% block comments %}
-
-        {% endblock %}
-
+            {% endblock %}
+        </div>
+        {% endif %}
     </body>
 </html>
 
@@ -55,14 +65,13 @@
 <script>
     var currentdate = new Date(); 
     var hour = currentdate.getHours();
-
     var head  = document.getElementsByTagName('head')[0];
     var link  = document.createElement('link');
     link.rel  = 'stylesheet';
     link.type = 'text/css';
     link.media = 'all';
 
-    if (hour >= 19){
+    if (hour >= 19 || hour < 6){
         link.href = '{% static "dark.css" %}';
     }else{
         link.href = '{% static "light.css" %}';
@@ -71,4 +80,7 @@
     head.appendChild(link);
 
 </script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 

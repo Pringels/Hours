@@ -10,6 +10,7 @@ def archive(request):
     context = {}
     context['posts'] = all_posts
     context['count'] = all_posts.count()
+    context['page'] = 'archive'
     return render(request, 'blog/archive.html', context)
 
 

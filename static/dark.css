@@ -1,6 +1,8 @@
-
 html {
     color:#92a1a1;
+}
+
+.main {
     background-color: #002b36;
 }
 
@@ -28,4 +30,8 @@ blockquote {
 input[type='submit'] {
     background-color: #627b83;
     color:#FDF5E6;
+}
+
+.comments {
+    background-color: #efe8d5;
 }

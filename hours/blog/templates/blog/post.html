@@ -1,12 +1,14 @@
 {% extends "blog/base.html" %}
 
 {% block title %}
-<h2>{{ title }}</h2>
-<em>by Peter Ringelmann - {{ post_date }}</em>
+<div class="title">
+    <h2>{{ title }}</h2>
+    <em>by Peter Ringelmann<br/>{{ post_date|date:"d M Y"  }}</em>
+</div>
 {% endblock %}
 
 {% block content %}
-    <p>{{ content|safe }}</p>
+    <div class="post">{{ content|safe }}</div>
 {% endblock %}
 
 {% block comments %}
@@ -28,8 +30,9 @@
         <br/>
         <input type="submit" value="Add Comment" />
     </form>
+    <hr/>
     {% for object in comments %}
-        <h2>{{ object.author }}</h2>
+        <h3>{{ object.author }}</h3>
         <em>{{ object.pub_date }}</em>
         <p>{{ object.comment }}</p>
         <hr/>

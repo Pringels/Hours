@@ -1,23 +1,27 @@
 html {
     color:#556e75;
+}
+
+.main {
     background-color: #fef6e3;
 }
 
 nav a {
-    color: #556e75;     
+    color: #efe8d5;     
 }
 
 h1 a {
-    color:#556e75;
+    color: #fef6e3;
 }
 
 em {
-    color:#99A;
+    color:#00a299;
 }
 
-blockquote {
-    color:#99A;
+q {
+    color:#00a399;
 }
+
 
 .archive a {
     color: #556e75;
@@ -27,3 +31,8 @@ input[type='submit'] {
     background-color: #556e75;
     color:#FDF5E6;
 }
+
+.comments {
+    background-color: #efe8d5;
+}
+

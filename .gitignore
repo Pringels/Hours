@@ -1,3 +1,4 @@
 hours/ve/
 hours/hours/local_settings.py
 hours/hours/local_settings.pyc
+**/*.pyc
