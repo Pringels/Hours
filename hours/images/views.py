@@ -6,6 +6,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django import forms
 from django.conf import settings
 
+key = 'MLiwwrk0nLu3i2AWCtMKWkanV8T9u56H'
+
 class UploadFileForm(forms.Form):
     title = forms.CharField(max_length=50)
     file = forms.FileField()
@@ -15,6 +17,13 @@ class UploadFileForm(forms.Form):
 @csrf_exempt
 def upload(request):
     post = request.POST.get('test');
+    auth_key = request.POST.get('auth_key');
+
+    if auth_key:
+        if auth_key != key:
+            return HttpResponse("Invalid auth key")
+    else:
+        return HttpResponse("Missing auth key")
 
     handle_uploaded_file(request.FILES['test'])
 
