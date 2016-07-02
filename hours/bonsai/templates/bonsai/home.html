@@ -6,10 +6,27 @@
  <title></title>
  <meta name="description" content="">
  <meta name="viewport" content="width=device-width, initial-scale=1">
- <link rel="stylesheet" type="text/css" href="">
+ <link rel="stylesheet" type="text/css" href="/static/gauge.css">
+  <link rel="stylesheet" type="text/css" href="/static/bonsai.css">
+ <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+ <script src="/static/snap.svg-min.js"></script>
+
+
  </head>
  <body>
-     logged in!
-     {{ latest_moisture_reading }}
+
+     <div class="gauge-cont" data-percentage="{{ latest_moisture_reading }}">
+      <div class="gauge">
+        <div class="inner"></div>
+        <div class="spinner"></div>
+      </div>
+      <div class="pointer"></div>
+      <div class="pointer-knob"></div>
+    </div>
+
+    <svg id="liquid"></svg>
+
  </body>
  </html>
+
+ <script src="/static/bonsai.js"></script>

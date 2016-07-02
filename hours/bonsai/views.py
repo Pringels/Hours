@@ -18,12 +18,14 @@ def login_user(request):
         if user.is_active:
             login(request, user)
             return HttpResponseRedirect(reverse('bonsai:home'))
-    return HttpResponse("login error")
+    context = {"failed": True}
+    return render(request, 'bonsai/login.html', context)
 
 def home(request):
     if request.user.is_authenticated():
         context = {}
-        context["latest_moisture_reading"] = BonsaiStatus.objects.latest("post_date")
+        latest_moisture_reading = BonsaiStatus.objects.latest("post_date")
+        context["latest_moisture_reading"] = int(((4096.00 - int(latest_moisture_reading.moisture)) / 4096) * 100)
         return render(request, 'bonsai/home.html', context)
     else:
         return render(request, 'bonsai/login.html')
@@ -31,7 +33,7 @@ def home(request):
 
 @csrf_exempt
 def update(request):
-    moisture_reading = request.POST.get("moisture", "")
+    moisture_reading = request.POST.get("data", "")
     key = request.POST.get("key", "")
 
     if key == auth_key:

@@ -1,21 +1,32 @@
 <!doctype html>
  <html class="no-js" lang="">
  <head>
- <meta charset="utf-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <title></title>
- <meta name="description" content="">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <link rel="stylesheet" type="text/css" href="">
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <title></title>
+     <meta name="description" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" type="text/css" href="/static/bonsai.css">
  </head>
  <body>
-     <form action="/bonsai/login/" method="POST">
-         {% csrf_token %}
-         <label>User name:</label>
-         <input type="text" name="username"/>
-         <label>Password:</label>
-         <input type="password" name="password"/>
-         <input type="submit" value="log in"/>
-     </form>
+     <div class="bonsai">
+         <img src="/static/images/dragon2.jpg"/>
+         <h1>Welcome to Gorn's watering hole</h1>
+         {% if failed %}
+            <h2>Pathetic human!<br/><br/>Get it wrong again and I'll set your hair on fire!</h2>
+         {% endif %}
+         <form action="/bonsai/login/" method="POST" class="login">
+             {% csrf_token %}
+             <div class="form-row">
+                 <label>Who goes there?</label>
+                 <input type="text" name="username"/>
+             </div>
+             <div class="form-row">
+                 <label>Speak, friend, and enter</label>
+                 <input type="password" name="password"/>
+             </div>
+             <input type="submit" value="Make it so"/>
+         </form>
+     </div>
  </body>
  </html>
