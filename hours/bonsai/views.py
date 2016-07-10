@@ -1,3 +1,6 @@
+import json
+import datetime
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from bonsai.models import BonsaiStatus
@@ -45,5 +48,22 @@ def update(request):
     return HttpResponse("auth failed")
 
 def fetch(request):
-    latest_moisture_reading = BonsaiStatus.objects.latest("post_date")
+    latest_moisture_reading = int(BonsaiStatus.objects.latest("post_date").moisture)
     return HttpResponse(latest_moisture_reading)
+
+def fetch_more(request):
+    latest_moisture_readings = BonsaiStatus.objects.order_by('-post_date')[:10]
+    json_out = []
+    for item in latest_moisture_readings:
+        json_out.append(item.moisture)
+    latest_reading = latest_moisture_readings.first().post_date.replace(tzinfo=None)
+    timedelta = datetime.datetime.now() - latest_reading
+    latest_reading = latest_reading.replace(second=0, microsecond=0)
+    json_out = {
+        "data": json_out,
+        "date": str(latest_reading).encode('utf-8'),
+        "delta": timedelta.days,
+    }
+
+    json_out = json.dumps(json_out)
+    return HttpResponse(json_out)

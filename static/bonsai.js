@@ -1,8 +1,12 @@
 var global_percentage = 0;
+var global_history = [];
+var global_last_updated = 0;
+var global_last_updated_date = 0;
 
 $(document).ready(function(){
     runAllGauges();
     initWater();
+    initHistogram();
 });
 
 setInterval(function(){
@@ -10,9 +14,20 @@ setInterval(function(){
       type: "GET",
       url: "/bonsai/fetch/",
     }).done(function(data) {
-        data = Math.round(((4096 - data) / 4096) * 100);
-        $('.gauge-cont').data('percentage', data);
+        global_percentage = ((4000 - data) / 4000 ) * 100;
+        $('.gauge-cont').data('percentage', global_percentage);
         runAllGauges();
+        $.ajax({
+          type: "GET",
+          url: "/bonsai/fetch_more/",
+        }).done(function(data) {
+            parsed_data = JSON.parse(data);
+            global_history = parsed_data.data;
+            global_last_updated = parsed_data.delta;
+            global_last_updated_date = parsed_data.date;
+            update_histogram();
+        });
+
     });
 }, 500);
 
@@ -28,9 +43,17 @@ $('.reset').on('click', function(e){
   }
 });
 
+$("#liquid").on("mouseover", function(){
+    $('.stats').addClass('active');
+});
+
+$("#liquid").on("mouseout", function(){
+    $('.stats').removeClass('active');
+});
 
 function runAllGauges()
 {
+
   var gauges = $('.gauge-cont');
   $.each(gauges, function(i, v){
     var self = this;
@@ -66,7 +89,6 @@ function resetGauge(gauge)
 function setGauge(gauge)
 {
   var percentage = $(gauge).data('percentage') / 100;
-  global_percentage = percentage * 100;
   var degrees = 180 * percentage;
   var pointerDegrees = degrees - 90;
   var spinner = $(gauge).find('.spinner');
@@ -88,8 +110,14 @@ function initWater() {
     var center_x = 300;
     var testActive = true;
 
+
     var delay = 0.05;
 
+
+    var box3 = s.rect(center_x - 155, 250, 310, 310);
+
+    var image = s.image("/static/images/soil.jpg", center_x - 150, 250, 300, 300);
+    var image2 = s.image("/static/images/tree.png", center_x - 205, -350, 475, 600);
 
     var path = "M"+center_x+",20";
     path += "L"+(center_x+100)+",20";
@@ -99,16 +127,67 @@ function initWater() {
 
     var box = s.path(path);
 
+    // 955 x 1207 = 1.264
+
+
     var m_circle1 = s.circle(center_x, 400, 150);
     m_circle1.attr({
         fill: "#fff"
     });
-    var mask = s.group(m_circle1);
+
+    var m_box1 = s.rect(center_x - 150, 250, 300, 150);
+    m_box1.attr({
+        fill: "#fff"
+    });
+
+    var m_circle2 = s.circle(center_x, 400, 150);
+    m_circle2.attr({
+        fill: "#fff"
+    });
+
+    var m_box2 = s.rect(center_x - 150, 250, 300, 150);
+    m_box2.attr({
+        fill: "#fff"
+    })
+
+    var m_circle3 = s.circle(center_x, 400, 150);
+    m_circle3.attr({
+        fill: "#fff"
+    });
+
+    var m_box3 = s.rect(center_x - 160, 250, 320, 150);
+    m_box3.attr({
+        fill: "#fff"
+    })
+
+    var mask = s.group(m_circle1, m_box1);
+    var mask2 = s.group(m_circle2, m_box2);
+    var mask3 = s.group(m_circle3, m_box3);
+
+
+    mask3.attr({
+        fill: "#FFF",
+        stroke: "#FFF",
+        strokeWidth: 10
+    })
+
+    box3.attr({
+        mask: mask3,
+        fill: "#FFF",
+        strokeWidth: 10
+    });
+
+    image.attr({
+        mask: mask2
+    })
 
     box.attr({
         mask: mask,
         fill: "rgb(80, 80, 255)"
     });
+
+    box.addClass('water');
+
 
     var ticker = 0;
 
@@ -213,6 +292,40 @@ function initWater() {
     };
 
     animloop();
-
-
 }
+
+function initHistogram() {
+    var s = Snap("#histogram");
+
+    var center_x = 500;
+
+    var svg = document.getElementById("histogram");
+
+    var path = "M"+center_x+",20";
+    path += "L"+(center_x+100)+",20";
+    path += "L"+(center_x+100)+",200";
+    //path += "C300,400,150,100,10,200";
+    //path += "L10,400";
+
+    var box = s.path(path);
+    box.addClass('histogram');
+
+    window.update_histogram = function(){
+        var new_path = "M00,20";
+
+        for (var i = global_history.length - 1; i >= 0; i--){
+            var coord = global_history[i] / 100
+            new_path += "L" + ((global_history.length - i)*20) +"," + (global_history[i] / 100);
+        }
+        //new_path += "L" + (global_history.length * 20) + ",50";
+        //new_path += "L0,50";
+
+        box.attr(
+            {path: new_path}
+        );
+
+        $('.last_updated h1 b').html(global_last_updated);
+        $('.last_updated h2').html(global_last_updated_date);
+    }
+
+};

@@ -15,16 +15,29 @@
  </head>
  <body>
 
-     <div class="gauge-cont" data-percentage="{{ latest_moisture_reading }}">
-      <div class="gauge">
-        <div class="inner"></div>
-        <div class="spinner"></div>
-      </div>
-      <div class="pointer"></div>
-      <div class="pointer-knob"></div>
-    </div>
+    <div class="container">
+        <svg id="liquid"></svg>
 
-    <svg id="liquid"></svg>
+        <div class="stats">
+
+            <div class="gauge-cont" data-percentage="{{ latest_moisture_reading }}">
+             <div class="gauge">
+               <div class="inner"></div>
+               <div class="spinner"></div>
+             </div>
+             <div class="pointer"></div>
+             <div class="pointer-knob"></div>
+           </div>
+
+           <div class="histogramContainer">
+                <svg id="histogram"></svg>
+                <div class="last_updated">
+                    <h1>Last updated <b>0</b> days ago</h1>
+                    <h2></h2>
+                </div>
+            </div>
+        </div>
+    </div>
 
  </body>
  </html>
