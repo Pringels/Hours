@@ -71,7 +71,7 @@ h1 {
 }
 
 .title em {
-    
+
 }
 
 .header {
@@ -90,7 +90,7 @@ nav {
 
 nav a {
     display: inline-block;
-    text-decoration: none;    
+    text-decoration: none;
     font-family: 'Abel', sans-serif;
 }
 
@@ -186,4 +186,6 @@ code {
     padding: 20px !important;
 }
 
-
+img {
+    max-width: 100%;
+}
