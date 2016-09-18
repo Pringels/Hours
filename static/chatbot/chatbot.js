@@ -2,14 +2,13 @@
  * Created by peter on 2016/09/18.
  */
 
-var global_counter = 0;
+var global_counter = 1;
 
-$('button').on('click', function(){
+$('.submit-button').on('click', function(){
   addMessage();
 });
 
 $(document).on('click', '.response-button', function(){
-
   var data = $(this).data('hook');
   addMessage(data);
 });

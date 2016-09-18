@@ -9,10 +9,17 @@ def get_image_path(instance, filename):
 
 class Settings(models.Model):
     active_queue = models.ForeignKey('ResponseQueue', blank=True)
+    active_bot = models.ForeignKey('Bot', blank=True)
 
     def __str__(self):
-        return "Active Queue"
+        return "Active Bot"
 
+class Bot(models.Model):
+    title = models.CharField(max_length=255)
+    profile_pic = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
 
 class ResponseQueue(models.Model):
     title = models.CharField(max_length=255, default='Default')

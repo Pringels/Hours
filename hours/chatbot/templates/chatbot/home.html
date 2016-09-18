@@ -13,22 +13,33 @@
   <div class="phone-container">
         <div class="container">
           <div class="header">
-            <p>< Recent</p>
-            <h6>Chat with HAL</h6>
+            <h6>Chat with {{ bot_name }}</h6>
           </div>
 
           <ul class="chats">
-            <li class="chats-left">
-              Hello Dave. I am chatbot 9000. What would you like help with today?
-            </li>
 
+            <li class="chats-left">
+                {{ message }}
+                {% if image %}
+                    <img src="{{ image }}" class="response-image"/>
+                {% endif %}
+                {% for object in links %}
+                    <button class="response-button" data-hook="{{ object }}">{{ object }}</button>
+                {% endfor %}
+            </li>
           </ul>
           <div class="input">
-            <input type="text"/>
-            <button class="submit-button">submit</button>
+            <input type="text" placeholder="Write message"/>
+            <button class="submit-button"></button>
           </div>
         </div>
     </div>
  <script src="/static/chatbot/chatbot.js"></script>
 </body>
+
+<style type="text/css">
+.chats-left:before {
+    background-image: url(/static/images/{{ bot_profile_pic }})
+}
+</style>
 </html>

@@ -11,8 +11,11 @@ from chatbot.models import Message, Response, ResponseQueue, Settings
 
 def home(request):
     context = {}
-    messages = Message.objects.all()
-    context["messages"] = messages
+    app_settings = Settings.objects.all().first()
+    response = app_settings.active_queue.response.all()[0]
+    context = build_context(context, response)
+    context["bot_name"] = app_settings.active_bot.title
+    context["bot_profile_pic"] = app_settings.active_bot.profile_pic.url
     return render(request, 'chatbot/home.html', context)
 
 @csrf_exempt
@@ -38,7 +41,12 @@ def get_response(request):
     else:
         response = message.result
 
+    context = json.dumps(build_context(context, response))
 
+    return HttpResponse(context)
+
+
+def build_context(context, response):
     context['message'] = response.content
     context['image'] = False
     context['links'] = []
@@ -49,8 +57,5 @@ def get_response(request):
     if response.links:
         for link in response.links.all():
             context['links'].append(link.content)
-    context = json.dumps(context)
 
-    return HttpResponse(context)
-
-
+    return context

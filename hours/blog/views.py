@@ -16,15 +16,14 @@ def archive(request):
 
 def post(request, slug):
     if slug:
-        post = Post.objects.filter(slug = slug).first()
+        post = Post.objects.filter(slug=slug).first()
     else:
-        post = Post.objects.latest();
+        post = Post.objects.latest()
     context = {}
+
     context['title'] = post.title
     context['post_date'] = post.post_date
     context['content'] = post.content
-
-    # context['comments'] = post.comment_set.all()
 
     return render(request, 'blog/post.html', context)
 
