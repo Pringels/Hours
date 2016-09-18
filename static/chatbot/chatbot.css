@@ -2,6 +2,12 @@ html {
     box-sizing: border-box;
   font-family: arial;
   background-color: #222;
+
+}
+
+body {
+  padding: 0;
+  margin: 0;
 }
 
 *, *:before, *:after {
@@ -17,6 +23,12 @@ html {
   padding: 80px 40px;
 }
 
+
+.wrapper {
+  background-color: #FFF;
+  width: 100%;
+  height: 100vh;
+}
 
 .container {
   height: 584px;
@@ -49,9 +61,9 @@ html {
 }
 
 .chats {
-  width: 330px;
+  width: 100%;
   display: block;
-  height: 480px;
+  height: 85%;
   list-style: none;
   padding: 10px;
   position: absolute;
@@ -150,13 +162,12 @@ input {
 }
 
 .response-button {
-  width: 113%;
+  width: 100%;
   border: 0px;
   border-top: 1px solid #ccc;
   padding: 10px 0px;
   background-color: #f8f8f8;
   color: #59f;
-  margin-left: -10px;
 }
 
 .response-button:first-child {
@@ -164,7 +175,6 @@ input {
 }
 
 .response-button:last-child {
-  margin-bottom: -10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
 }

@@ -10,7 +10,9 @@ from hours.settings import STATIC_URL
 from chatbot.models import Message, Response, ResponseQueue, Settings
 
 def home(request):
+    standalone = request.GET.get("standalone", False)
     context = {}
+    context['standalone'] = standalone
     app_settings = Settings.objects.all().first()
     response = app_settings.active_queue.response.all()[0]
     context = build_context(context, response)

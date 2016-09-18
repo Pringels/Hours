@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="/static/chatbot/chatbot.css">
 <script
@@ -10,8 +11,12 @@
 			  crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="phone-container">
+  {% if not standalone %}
+      <div class="phone-container">
         <div class="container">
+  {% else  %}
+    <div class="wrapper">
+  {% endif %}
           <div class="header">
             <h6>Chat with {{ bot_name }}</h6>
           </div>
@@ -32,8 +37,11 @@
             <input type="text" placeholder="Write message"/>
             <button class="submit-button"></button>
           </div>
-        </div>
-    </div>
+</div>
+  {% if not standalone %}
+      </div>
+  {% endif  %}
+  </div>
  <script src="/static/chatbot/chatbot.js"></script>
 </body>
 
