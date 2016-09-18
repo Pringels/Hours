@@ -1,0 +1,204 @@
+html {
+    box-sizing: border-box;
+  font-family: arial;
+  background-color: #222;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.phone-container {
+  margin: 0px auto;
+  width: 400px;
+  height: 730px;
+  background-image: url('http://www.phonesrepaircentre.com/wp-content/uploads/2016/05/s7-edge.png');
+  background-position: -245px -942px;
+  padding: 80px 40px;
+}
+
+
+.container {
+  height: 584px;
+  max-width: 330px;
+  width: 330px;
+  position: relative;
+  overflow-y: scroll;
+  background-color: #fff;
+}
+
+.header {
+  height: 50px;
+  background-color: #eee;
+  border-bottom: 1px solid #ddd;
+  z-index: 3;
+  position: relative;
+}
+
+.header p {
+  margin: 0;
+  padding: 0;
+  padding-top: 17px;
+  padding-left: 10px;
+  color: #59f;
+  float: left;
+  font-size: 14px;
+}
+
+.header h6 {
+  padding: 0;
+  margin: 0;
+  padding-top: 17px;
+  padding-left: 50px;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+
+  float: left;
+}
+
+.chats {
+  width: 330px;
+  display: block;
+  height: 480px;
+  list-style: none;
+  padding: 10px;
+  position: absolute;
+  bottom: 50px;
+  transition: bottom 0.2s;
+  overflow-y: scroll;
+}
+
+.clear {
+  clear: both;
+}
+
+li {
+  max-width: 70%;
+  display: block;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 3px;
+  opacity: 1;
+  transition: all 0.5s;
+  word-wrap:break-word;
+  font-size: 15px;
+  position: relative;
+}
+
+li:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+}
+
+.chats-right {
+  float: right;
+  margin-left: 30%;
+  text-align: right;
+  background-color: #59f;
+  color: #fff;
+}
+
+.chats-right:after{
+  right: -3px;
+  background-color: #59f;
+}
+
+.chats-left {
+  float: left;
+  text-align: left;
+  margin-right: 30%;
+  margin-left: 40px;
+  background-color: #eee;
+  color: #333;
+}
+
+.chats-left:after{
+  left: -3px;
+  background-color: #eee;
+}
+
+.chats-left:before {
+  content: "";
+  background-image: url('http://placehold.it/30x30');
+  position: absolute;
+  top: 5px;
+  left: -40px;
+  width: 30px;
+  height: 30px;
+}
+
+.pre {
+  opacity: 0;
+}
+
+.chats-right.pre {
+  margin-right: 50px;
+  margin-left: 0;
+}
+
+.chats-left.pre {
+  margin-left: 100px;
+  margin-right: 10%;
+}
+
+
+.input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ccc;
+}
+
+input {
+  background-color: #eee;
+  padding: 20px;
+  font-size: 14px;
+  border: 0;
+  width: 73.5%;
+
+}
+
+.response-button {
+  width: 113%;
+  border: 0px;
+  border-top: 1px solid #ccc;
+  padding: 10px 0px;
+  background-color: #f8f8f8;
+  color: #59f;
+  margin-left: -10px;
+}
+
+.response-button:first-child {
+  margin-top: 10px;
+}
+
+.response-button:last-child {
+  margin-bottom: -10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.submit-button {
+  border: 0;
+  padding: 20px;
+  background-color: #59f;
+  color: #eee;
+  font-size: 14px;
+  float: right;
+  transition: all 0.2s;
+}
+
+.response-image {
+  width: 100%;
+  padding: 10px 0px;
+}
+
+.submit-button:hover {
+  background-color: #567;
+}

@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'tracker',
     'blog',
     'images',
-    'bonsai'
+    'bonsai',
+    'chatbot'
 )
 
 MIDDLEWARE_CLASSES = (
